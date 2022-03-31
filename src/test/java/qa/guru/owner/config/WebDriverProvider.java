@@ -1,5 +1,6 @@
 package qa.guru.owner.config;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -10,7 +11,7 @@ import java.util.function.Supplier;
 
 public class WebDriverProvider implements Supplier<WebDriver> {
 
-    //WebDriverConfig config = new WebDriverConfig(); - с точки зрения java правильнее писать то же самое вот так:
+
     public final WebDriverConfig config;
 
     public WebDriverProvider() {
@@ -23,15 +24,16 @@ public class WebDriverProvider implements Supplier<WebDriver> {
         driver.get(config.getBaseURL());
         return driver;
     }
-
-   /* private WebDriver createWebDriver() {
+    private WebDriver createWebDriver() {
         if (Objects.nonNull(config.getBrowser())) {
             switch (config.getBrowser()) {
                 case CHROME: {
+                    WebDriverManager.chromedriver().setup();
                     return new ChromeDriver();
                 }
                 case FIREFOX: {
-                      return new FirefoxDriver();
+                    WebDriverManager.firefoxdriver().setup();
+                    return new FirefoxDriver();
                 }
                 default: {
                     throw new RuntimeException("Browser type isn't supported");
@@ -40,5 +42,5 @@ public class WebDriverProvider implements Supplier<WebDriver> {
         }
         throw new RuntimeException("Browser type cannot be null");
 
-    }*/
+    }
 }
