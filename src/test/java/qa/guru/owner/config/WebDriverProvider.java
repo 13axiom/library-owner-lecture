@@ -1,6 +1,5 @@
 package qa.guru.owner.config;
 
-import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -14,7 +13,7 @@ public class WebDriverProvider implements Supplier<WebDriver> {
     public final WebDriverConfig config;
 
     public WebDriverProvider() {
-        this.config = ConfigFactory.create(WebDriverConfig.class, System.getProperties());
+        this.config = new WebDriverConfig();
     }
 
     @Override
@@ -24,14 +23,14 @@ public class WebDriverProvider implements Supplier<WebDriver> {
         return driver;
     }
 
-   /* private WebDriver createWebDriver() {
+    private WebDriver createWebDriver() {
         if (Objects.nonNull(config.getBrowser())) {
             switch (config.getBrowser()) {
                 case CHROME: {
                     return new ChromeDriver();
                 }
                 case FIREFOX: {
-                      return new FirefoxDriver();
+                     return new FirefoxDriver();
                 }
                 default: {
                     throw new RuntimeException("Browser type isn't supported");
@@ -40,5 +39,5 @@ public class WebDriverProvider implements Supplier<WebDriver> {
         }
         throw new RuntimeException("Browser type cannot be null");
 
-    }*/
+    }
 }
