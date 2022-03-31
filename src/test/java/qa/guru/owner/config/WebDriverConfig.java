@@ -10,7 +10,7 @@ public class WebDriverConfig {
     public String getBaseURL() {
         String baseURL = System.getProperty("baseURL");
         if (Objects.isNull(baseURL)) {
-            baseURL = "https://github.com/"
+            baseURL = "https://github.com/";
         }
         return baseURL;
     }
