@@ -2,8 +2,8 @@ package qa.guru.owner.config;
 
 import org.aeonbits.owner.Config;
 
-@Config.Sources("classpath:iphone.properties")
-public interface IOSMobileConfig extends Config{
+@Config.Sources("classpath:${device}.properties")
+public interface MobileConfig extends Config{
 
     @Key("device.name")
     String deviceName();
